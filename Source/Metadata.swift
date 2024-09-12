@@ -294,7 +294,7 @@ extension Metadata {
                 let name = fieldRecords[i].fieldName
                 guard let mangledTypeName = fieldRecords[i].mangledTypeName else { continue }
                 let functionMap: [String: () -> Any.Type?] = [
-                    "function": { _getTypeByMangledNameInContext(mangledTypeName, UInt(getMangledTypeNameSize(mangledTypeName)), genericContext: self.contextDescriptorPointer, genericArguments: self.genericArgumentVector) }
+                    "function": { _getTypeByMangledNameInContext(mangledTypeName, Int(getMangledTypeNameSize(mangledTypeName)), genericContext: self.contextDescriptorPointer, genericArguments: self.genericArgumentVector) }
                 ]
 
                 guard let function = functionMap["function"], let fieldType = function() else { continue }
